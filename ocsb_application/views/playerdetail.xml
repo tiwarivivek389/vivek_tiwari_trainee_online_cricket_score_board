@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<record id="playerdetail_app_form_view" model="ir.ui.view">
+            <field name="name">player.detail.form</field>
+            <field name="model">player.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="image" widget="image"/>
+                            <field name="address"/>
+                            <field name="age"/>
+                            <field name="role"/>
+                            <field name="batting_style"/>
+                            <field name="bowling_style"/>
+                            <!-- <field name="player_id"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="playerdetail_app_tree_view" model="ir.ui.view">
+            <field name="name">player.detail.tree</field>
+            <field name="model">player.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="image"/>
+                    <field name="address"/>
+                    <field name="role"/>
+                    <field name="batting_style"/>
+                    <field name="bowling_style"/>
+                </tree>
+            </field>
+        </record>
+        <record id="playerdetail_app_search_view" model="ir.ui.view">
+            <field name="name">player.detail.search</field>
+            <field name="model">player.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record id="playerdetail_app_act_window" model="ir.actions.act_window">
+            <field name="name">Player</field>
+            <field name="res_model">player.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sub_menu_playerdetail_app" name="Player" action="playerdetail_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+	</data>
+</odoo>

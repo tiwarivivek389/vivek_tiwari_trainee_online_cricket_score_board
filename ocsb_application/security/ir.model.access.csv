@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tournament_detail,access_tournament_detail,model_tournament_detail,base.group_user,1,1,1,1
+access_match_detail,access_match_detail,model_match_detail,base.group_user,1,1,1,1
+access_team_detail,access_team_detail,model_team_detail,base.group_user,1,1,1,1
+access_player_detail,access_player_detail,model_player_detail,base.group_user,1,1,1,1
+access_prize_caremony,access_prize_caremony,model_prize_caremony,base.group_user,1,1,1,1
+access_umpire_detail,access_umpire_detail,model_umpire_detail,base.group_user,1,1,1,1

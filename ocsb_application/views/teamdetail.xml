@@ -1,0 +1,58 @@
+<odoo>
+	<data>
+		<record id="teamdetail_app_form_view" model="ir.ui.view">
+            <field name="name">team.detail.form</field>
+            <field name="model">team.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="player_name"/>
+                            <field name="extra_player_name"/>
+                            <field name="captain_name"/>
+                            <field name="vice_captain_name"/>
+                            <field name="wicket_keepar_name"/>
+                            <!-- <field name="player_ids"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="teamdetail_app_tree_view" model="ir.ui.view">
+            <field name="name">team.detail.tree</field>
+            <field name="model">team.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="player_name"/>
+                    <field name="extra_player_name"/>
+                    <field name="captain_name"/>
+                    <field name="vice_captain_name"/>
+                    <field name="wicket_keepar_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="teamdetail_app_search_view" model="ir.ui.view">
+            <field name="name">team.detail.search</field>
+            <field name="model">team.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="player_name"/>
+                    <field name="extra_player_name"/>
+                    <field name="captain_name"/>
+                    <field name="vice_captain_name"/>
+                    <field name="wicket_keepar_name"/>
+                </search>
+            </field>
+        </record>
+        <record id="teamdetail_app_act_window" model="ir.actions.act_window">
+            <field name="name">Team</field>
+            <field name="res_model">team.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sub_menu_teamdetail_app" name="Team" action="teamdetail_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+	</data>
+</odoo>

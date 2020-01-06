@@ -1,0 +1,63 @@
+<odoo>
+	<data>
+		<record id="matchdetail_app_form_view" model="ir.ui.view">
+            <field name="name">match.detail.form</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="teama_name"/>
+                            <field name="teamb_name"/>
+                            <field name="match_type"/>
+                            <!-- <field name="match_date"/> -->
+                            <field name="match_date_time"/>
+                            <field name="match_venue"/>
+                            <field name="umpire_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="matchdetail_app_tree_view" model="ir.ui.view">
+            <field name="name">match.detail.tree</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="teama_name"/>
+                    <field name="teamb_name"/>
+                    <field name="match_type"/>
+                    <!-- <field name="match_date"/> -->
+                    <field name="match_date_time"/>
+                    <field name="match_venue"/>
+                    <field name="umpire_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="matchdetail_app_search_view" model="ir.ui.view">
+            <field name="name">match.detail.search</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="teama_name"/>
+                    <field name="teamb_name"/>
+                    <field name="match_type"/>
+                    <!-- <field name="match_date"/> -->
+                    <field name="match_date_time"/>
+                    <field name="match_venue"/>
+                    <field name="umpire_name"/>
+                </search>
+            </field>
+        </record>
+        <record id="matchdetail_app_act_window" model="ir.actions.act_window">
+            <field name="name">Match</field>
+            <field name="res_model">match.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sub_menu_matchdetail_app" name="Match" action="matchdetail_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+	</data>
+</odoo>

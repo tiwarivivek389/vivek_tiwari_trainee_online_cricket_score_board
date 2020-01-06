@@ -1,0 +1,52 @@
+<odoo>
+	<data>
+		<record id="tournament_app_form_view" model="ir.ui.view">
+            <field name="name">tournament.detail.form</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="place"/>
+                            <field name="team"/>
+                            <field name="starting_date"/>
+                            <field name="ending_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tournament_app_tree_view" model="ir.ui.view">
+            <field name="name">tournament.detail.tree</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="place"/>
+                    <field name="team"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tournament_app_search_view" model="ir.ui.view">
+            <field name="name">tournament.detail.search</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="place"/>
+                    <field name="team"/>
+                </search>
+            </field>
+        </record>
+        <record id="tournament_app_act_window" model="ir.actions.act_window">
+            <field name="name">Tournamnet</field>
+            <field name="res_model">tournament.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sub_menu_tournament_app" name="Tournament" action="tournament_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+	</data>
+</odoo>
