@@ -4,11 +4,52 @@ class TournamentDetail(models.Model):
 	_name="tournament.detail"
 	_discription="Tournament Detail"
 
+
+	# def button_confirmed(self):
+ #    	for rec in self:
+ #        	rec.write({'state': 'confirmed'})
+
+ #    def button_draft(self):
+ #        for rec in self:
+ #            rec.state = 'draft'
+
+ #    def button_done(self):
+ #        for rec in self:
+ #            rec.write({'state': 'done'})
+
+ #    def button_cancel(self):
+ #        for rec in self:
+ #            rec.write({'state': 'cancel'})
+
 	name=fields.Char(string="Name",required=True)
 	place=fields.Text(string="Place")
 	team=fields.Integer()
-	starting_date=fields.Date()
-	ending_date=fields.Date()
+	date_start=fields.Date()
+	date_stop=fields.Date()
+	duration=fields.Float()
+
+	def button_confirmed(self):
+		for rec in self:
+			rec.write({'state':'confirmed'})
+
+	def button_draft(self):
+		for rec in self:
+			rec.state='draft'
+
+	def button_done(self):
+		for rec in self:
+			rec.write({'state':'done'})
+
+	def button_cancel(self):
+		for rec in self:
+			rec.write({'state': 'cancel'})
+
+	state = fields.Selection([
+        ('confirmed', 'Confirmed'),
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled'),
+        ], required=True, default='confirmed')
 
 class MatchDetail(models.Model):
 	_name="match.detail"
@@ -29,7 +70,7 @@ class TeamDetail(models.Model):
 
 	name=fields.Char(string="Name",required=True)
 	player_name=fields.Many2many("player.detail",string="player name")
-	extra_player_name=fields.One2many("player.detail","player_id",string="player name")
+	extra_player_name=fields.One2many("player.detail","player_id",string="extra 	player name")
 	captain_name=fields.Many2one("player.detail",string="captain_name")
 	vice_captain_name=fields.Many2one("player.detail",string="vice_captain_name")
 	wicket_keepar_name=fields.Many2one("player.detail",string="wicket_keepar_name")
@@ -80,6 +121,6 @@ class User(models.Model):
 	_name="user.user"
 	_discription="User User"
 
-	name=fields.Char(string="user name",required=True)
-
+	# name=fields.Char(string="user name",required=True)
+	match=fields.Many2one("match.detail",string="match")
 		

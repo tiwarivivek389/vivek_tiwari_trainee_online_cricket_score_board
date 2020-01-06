@@ -1,0 +1,57 @@
+<odoo>
+	<data>
+		<record id="user_app_form_view" model="ir.ui.view">
+            <field name="name">user.user.form</field>
+            <field name="model">user.user</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!-- <field name="name"/> -->
+                            <field name="match"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="user_app_kanban_view" model="ir.ui.view">
+            <field name="name">user.user.kanban</field>
+            <field name="model">user.user</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!-- <field name="name"/> -->
+                            <field name="match"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="user_app_tree_view" model="ir.ui.view">
+            <field name="name">user.user.tree</field>
+            <field name="model">user.user</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- <field name="name"/> -->
+                </tree>
+            </field>
+        </record>
+        <record id="user_app_search_view" model="ir.ui.view">
+            <field name="name">user.user.search</field>
+            <field name="model">user.user</field>
+            <field name="arch" type="xml">
+                <search>
+                    <!-- <field name="name"/> -->
+                </search>
+            </field>
+        </record>
+        <record id="user_app_act_window" model="ir.actions.act_window">
+            <field name="name">User</field>
+            <field name="res_model">user.user</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem id="sub_menu_user_app" name="User" action="user_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+	</data>
+</odoo>

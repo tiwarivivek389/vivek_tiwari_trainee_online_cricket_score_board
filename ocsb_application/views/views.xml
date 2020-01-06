@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record id="tournament_app_form_view" model="ir.ui.view">
+       <!--  <record id="tournament_app_form_view" model="ir.ui.view">
             <field name="name">tournament.detail.form</field>
             <field name="model">tournament.detail</field>
             <field name="arch" type="xml">
@@ -45,10 +45,10 @@
             <field name="name">Tournamnet</field>
             <field name="res_model">tournament.detail</field>
             <field name="view_mode">tree,form</field>
-        </record>
+        </record> -->
 
         <menuitem id="main_menu_cricket_tournament_app" name="Cricket_Tournament" />
 
-        <menuitem id="sub_menu_tournament_app" name="Tournament" action="tournament_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" />
+        <!-- <menuitem id="sub_menu_tournament_app" name="Tournament" action="tournament_app_act_window" parent="main_menu_cricket_tournament_app" sequence="4" /> -->
     </data>
 </odoo>

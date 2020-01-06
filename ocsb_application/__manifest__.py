@@ -33,6 +33,7 @@
         'views/playerdetail.xml',
         'views/prizecaremony.xml',
         'views/umpiredetail.xml',
+        'views/user.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
