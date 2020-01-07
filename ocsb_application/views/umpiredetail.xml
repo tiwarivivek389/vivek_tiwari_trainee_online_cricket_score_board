@@ -5,6 +5,12 @@
             <field name="model">umpire.detail</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="button_confirm" states="draft,done" string="Confirm" class="btn-info" type="object"/>
+                        <button name="button_draft" states="confirm,done" string="Draft" class="btn-draft" type="object"/>
+                        <button name="button_done" states="confirm,draft" string="Done" class="btn-success" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="confirm,draft,done"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>

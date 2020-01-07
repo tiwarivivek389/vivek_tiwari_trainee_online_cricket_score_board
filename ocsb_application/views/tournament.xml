@@ -5,13 +5,6 @@
             <field name="model">tournament.detail</field>
             <field name="arch" type="xml">
                 <form>
-                    <header>
-                        <button name="button_confirmed" string="Confirmed" class="btn-info" type="object"/>
-                        <button name="button_draft" string="Draft" class="btn-primary" type="object"/>
-                        <button name="button_done" string="Done" class="btn-success" type="object"/>
-                        <button name="button_cancel" string="Cancelled" class="btn-danger" type="object"/>
-                        <field name="state" widget="statusbar" statusbar_visible="confirmed,draft,done"/>
-                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>

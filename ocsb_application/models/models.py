@@ -4,23 +4,6 @@ class TournamentDetail(models.Model):
 	_name="tournament.detail"
 	_discription="Tournament Detail"
 
-
-	# def button_confirmed(self):
- #    	for rec in self:
- #        	rec.write({'state': 'confirmed'})
-
- #    def button_draft(self):
- #        for rec in self:
- #            rec.state = 'draft'
-
- #    def button_done(self):
- #        for rec in self:
- #            rec.write({'state': 'done'})
-
- #    def button_cancel(self):
- #        for rec in self:
- #            rec.write({'state': 'cancel'})
-
 	name=fields.Char(string="Name",required=True)
 	place=fields.Text(string="Place")
 	team=fields.Integer()
@@ -28,28 +11,6 @@ class TournamentDetail(models.Model):
 	date_stop=fields.Date()
 	duration=fields.Float()
 
-	def button_confirmed(self):
-		for rec in self:
-			rec.write({'state':'confirmed'})
-
-	def button_draft(self):
-		for rec in self:
-			rec.state='draft'
-
-	def button_done(self):
-		for rec in self:
-			rec.write({'state':'done'})
-
-	def button_cancel(self):
-		for rec in self:
-			rec.write({'state': 'cancel'})
-
-	state = fields.Selection([
-        ('confirmed', 'Confirmed'),
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-        ('cancel', 'Cancelled'),
-        ], required=True, default='confirmed')
 
 class MatchDetail(models.Model):
 	_name="match.detail"
@@ -103,6 +64,19 @@ class UmpireDetail(models.Model):
 	name=fields.Char(string="Name",required=True)
 	image=fields.Binary()
 	address=fields.Text()
+	state=fields.Selection([('confirm','Confirm'),('draft','Draft'),('done','Done'),],default="confirm")
+
+	def button_confirm(self):
+		self.write({'state':"confirm"})
+		return True
+
+	def button_draft(self):
+		self.write({'state':"draft"})
+		return True
+
+	def button_done(self):
+		self.write({'state':"done"})
+		return True
 
 class PrizeCaremony(models.Model):
 	_name="prize.caremony"
