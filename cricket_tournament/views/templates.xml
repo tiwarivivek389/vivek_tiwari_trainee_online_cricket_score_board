@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="index">
+		<t t-call="website.layout">
+			<div class="container">
+			<title>Tornament</title>
+			<table border="1px solid" width="100%">
+				<a role="button" t-attf-href="/tournament/form/" >Create</a>
+				<tr>
+					<th>name</th>
+					<th>place</th>
+					<th>team</th>
+					<th>date</th>
+					<th>date</th>
+					<th>Action</th>
+				</tr>
+				<t t-foreach="tournaments" t-as="tournament">
+					<tr>
+						<p>
+							<td t-esc="tournament.name"/>
+							<td t-esc="tournament.place"/>
+							<td t-esc="tournament.team"/>
+							<td t-esc="tournament.starting_date"/>
+							<td t-esc="tournament.ending_date"/>
+							<td>
+								<a t-attf-href="/tournament/form/{{slug(tournament)}}" >
+	                        	<i class="fa fa-pencil"/></a>
+	           					<a t-attf-href="/delete/{{slug(tournament)}}/">
+	                        	<i class="fa fa-trash"/></a>
+	                    	</td>      
+						</p>
+					</tr>
+				</t>
+			</table>
+		</div>
+		</t>
+	</template>
+	<template id="tourna">
+		<t t-call="website.layout">
+			<div class="container">
+			<title>Tournament-record</title>
+			<form t-attf-action="/tournament/record/#{tournament.id if tournament else ''}" method="post">
+				<div class="form-group">
+					<label>Name:</label>
+					<input type="text" class="form-control" t-attf-value="#{tournament.name if tournament else ''}" name="name"/>
+				</div>
+				<div class="form-group">
+					<label>Place</label>
+					<input type="text" class="form-control" t-attf-value="#{tournament.place if tournament else ''}" name="place"/>
+				</div>
+				<div class="form-group">
+					<label>Team</label>
+					<input type="text" class="form-control" t-attf-value="#{tournament.team if tournament else ''}" name="team"/>
+				</div>
+				<div class="form-group">
+					<label>Starting Date</label>
+					<input type="text" class="form-control" t-attf-value="#{tournament.starting_date if tournament else ''}" name="starting_date"/>
+				</div>
+				<div class="form-group">
+					<label>Ending Date</label>
+					<input type="text" class="form-control" t-attf-value="#{tournament.ending_date if tournament else ''}" name="ending_date"/>
+				</div>
+				<input type="submit" t-attf-value="#{'Update' if tournament else 'Create'}"/>
+			</form>
+		</div>
+		</t>
+	</template>
+</odoo>

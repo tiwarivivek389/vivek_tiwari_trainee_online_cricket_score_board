@@ -1,0 +1,292 @@
+<odoo>
+    <data>
+
+        <!-- tournament detail -->
+        <record id="tournament_detail_form_view" model="ir.ui.view">
+            <field name="name">tournament.detail.form</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="place"/>
+                            <field name="team"/>
+                            <field name="starting_date"/>
+                            <field name="ending_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tournament_detail_tree_view" model="ir.ui.view">
+            <field name="name">tournament.detail.tree</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="place"/>
+                    <field name="team"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tournament_detail_calendar_view" model="ir.ui.view">
+            <field name="name">tournament.detail.calendar</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <calendar color="starting_date" date_start="starting_date" date_stop="ending_date">
+                    <field name="name"/>
+                    <field name="place"/>
+                    <field name="team"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
+                </calendar>
+            </field>
+        </record>
+        <record id="tournament_detail_graph_view" model="ir.ui.view">
+            <field name="name">tournament.detail.graph</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <graph string="team">
+                    <field name="name"/>
+                    <field name="place"/>
+                    <field name="team" group="True"/>
+                    <field name="starting_date"/>
+                    <field name="ending_date"/>
+                </graph>
+            </field>
+        </record>
+        <record id="tournament_detail_search_view" model="ir.ui.view">
+            <field name="name">tournament.detail.search</field>
+            <field name="model">tournament.detail</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" filter_domain="['|',('name','ilike',self),('place','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+        <record id="tournament_detail_act_window" model="ir.actions.act_window">
+            <field name="name">Tournamnet</field>
+            <field name="res_model">tournament.detail</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+        </record>
+
+        <!-- match detail -->
+        <record id="match_detail_form_view" model="ir.ui.view">
+            <field name="name">match.detail.form</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="team1name"/>
+                            <field name="team2name"/>
+                            <field name="matchtype"/>
+                            <field name="matchdatetime"/>
+                            <field name="umpirename"/>
+                            <field name="matchvenue"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="match_detail_tree_view" model="ir.ui.view">
+            <field name="name">match.detail.tree</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="team1name"/>
+                    <field name="team2name"/>
+                    <field name="matchtype"/>
+                    <field name="matchdatetime"/>
+                    <field name="umpirename"/>
+                    <field name="matchvenue"/>
+                </tree>
+            </field>
+        </record>
+        <record id="match_detail_kanban_view" model="ir.ui.view">
+            <field name="name">match.detail.kanban</field>
+            <field name="model">match.detail</field>
+            <field name="arch" type="xml">
+               <kanban>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_dropdown_kanban">
+                            <div class="oe_dropdown_toggle">
+                                <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
+                                <ul class="oe_dropdown_menu">
+                                    <li>
+                                        <a type="delete">Delete</a>
+                                    </li>
+                                    <li>
+                                        <ul class="oe_dropdown_colorpicker" data-field="color" />
+                                    </li>
+                                </ul>                                
+                            </div>
+                            <div class="oe_clear"></div>
+                            <div t-attf-class="oe_kanban_content">
+                                Match Name:
+                                <field name="name"/>
+                                <br/>
+                                team1 Name:
+                                <field name="team1name"/>
+                                <br/>
+                                team2 Name:
+                                <field name="team2name"/>
+                                <br/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+               </kanban>
+            </field>
+        </record>
+        <record id="match_detail_act_window" model="ir.actions.act_window">
+            <field name="name">Match</field>
+            <field name="res_model">match.detail</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <!-- team detail -->
+        <record id="team_detail_form_view" model="ir.ui.view">
+            <field name="name">team.detail.form</field>
+            <field name="model">team.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="playername"/>
+                            <field name="extraplayername"/>
+                            <field name="captainname"/>
+                            <field name="vicecaptainname"/>
+                            <field name="wicketkeeparname"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="team_detail_tree_view" model="ir.ui.view">
+            <field name="name">team.detail.tree</field>
+            <field name="model">team.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="playername"/>
+                    <field name="extraplayername"/>
+                    <field name="captainname"/>
+                    <field name="vicecaptainname"/>
+                    <field name="wicketkeeparname"/>
+                </tree>
+            </field>
+        </record>
+        <record id="team_detail_act_window" model="ir.actions.act_window">
+            <field name="name">Team</field>
+            <field name="res_model">team.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- user detail -->
+        <record id="user_detail_form_view" model="ir.ui.view">
+            <field name="name">user.detail.form</field>
+            <field name="model">user.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="image" widget="image"/>
+                            <field name="address"/>
+                            <field name="age"/>
+                            <field name="role"/>
+                            <field name="batting_style"/>
+                            <field name="bowling_style"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="user_detail_tree_view" model="ir.ui.view">
+            <field name="name">user.detail.tree</field>
+            <field name="model">user.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="image"/>
+                    <field name="address"/>
+                    <field name="age"/>
+                    <field name="role"/>
+                    <field name="batting_style"/>
+                    <field name="bowling_style"/>
+                </tree>
+            </field>
+        </record>
+        <record id="user_detail_act_window" model="ir.actions.act_window">
+            <field name="name">User</field>
+            <field name="res_model">user.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- prize caremony -->
+        <record id="prize_caremony_form_view" model="ir.ui.view">
+            <field name="name">prize.caremony.form</field>
+            <field name="model">prize.caremony</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_confirm" states="draft,done" string="Confirm" class="btn-info" type="object"/>
+                        <button name="button_draft" states="confirm,done" string="Draft" class="btn-draft" type="object"/>
+                        <button name="button_done" states="confirm,draft" string="Done" class="btn-success" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="confirm,draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="receiver_name"/>
+                            <field name="giver_name"/>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="prize_caremony_tree_view" model="ir.ui.view">
+            <field name="name">prize.caremony.tree</field>
+            <field name="model">prize.caremony</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="receiver_name"/>
+                    <field name="giver_name"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="prize_caremony_act_window" model="ir.actions.act_window">
+            <field name="name">Prize Caremony</field>
+            <field name="res_model">prize.caremony</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="main_menu_live_cricket_score_board" name="Cricket_Tournament" />
+
+        <menuitem id="sub_menu_tournament_detail" name="Tournament" action="tournament_detail_act_window" parent="main_menu_live_cricket_score_board" sequence="1" />
+
+        <menuitem id="sub_menu_match_detail" name="Match" action="match_detail_act_window" parent="main_menu_live_cricket_score_board" sequence="2" />
+
+        <menuitem id="sub_menu_team_detail" name="Team" action="team_detail_act_window" parent="main_menu_live_cricket_score_board" sequence="3" />
+
+        <menuitem id="sub_menu_user_detail" name="User" action="user_detail_act_window" parent="main_menu_live_cricket_score_board" sequence="4" />
+
+        <menuitem id="sub_menu_prize_caremony" name="Prize Caremony" action="prize_caremony_act_window" parent="main_menu_live_cricket_score_board" sequence="5" />
+
+
+    </data>
+</odoo>
