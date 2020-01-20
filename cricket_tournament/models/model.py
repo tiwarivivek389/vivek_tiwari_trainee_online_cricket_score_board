@@ -10,10 +10,11 @@ class TournamentDetail(models.Model):
 	starting_date=fields.Date(string="Tournament Starting Date")
 	ending_date=fields.Date(string="Tournament Ending Date")
 
-	# @api.model
-	# def create(self, values):
-	# 	record=super(TournamentDetail, self).create(values)
-	# 	return record
+	@api.constrains('starting_date','ending_date')
+	def check_date(self):
+		for rec in self:
+			if rec.ending_date < rec.starting_date:
+				raise ValidationError(_('value must be greater than'))
 
 class MatchDetail(models.Model):
 	_name="match.detail"
@@ -84,5 +85,45 @@ class PrizeCaremony(models.Model):
 	def button_done(self):
 		self.write({'state':'done'})
 		return True
+
+class ScoreBoard(models.Model):
+	_name="score.board"
+	_discription="Score Board"
+
+	inning=fields.Selection([('firstinning','First Inning'),('secondinning','Second Inning')])
+	over=fields.Integer(string="Over")
+	ball=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
+	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
+	stricker=fields.Many2one("user.detail",string="Stricker")
+	nonstricker=fields.Many2one("user.detail",string="Non-Stricker")
+	bowler=fields.Many2one("user.detail",string="Bowler")	
+	typeofrun=fields.Selection([
+		('batted','Batted'),
+		('extra','Extra'),
+		('extra,batted','Extra,Batted'),
+		('out','Out'),
+		('out,batted','Out,Batted')
+		])
+	selectruninextra=fields.Selection([
+		('wide','Wide'),
+		('noball','Noball'),
+		('bye','Bye')
+		])
+	selectbatsmanisout=fields.Selection([
+		('bowled','Bowled'),
+		('catch','Catch'),
+		('lbw','LBW'),
+		('stumped','Stumped'),
+		('hitwicket','Hit-Wicket'),
+		('runoutstricker','Runout-Stricker'),
+		('runoutnonstricker','Runout-nonStricker'),
+		('retirehurtstricker','Retirehurt-Stricker'),
+		('retirehurtnonstricker','Retirehurt-nonStricker'),
+		])
+
+
+
+
+
 
 

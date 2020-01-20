@@ -4,10 +4,9 @@
             <field name="name">wizard form</field>
             <field name="model">ocsb.wizard</field>
             <field name="arch" type="xml">
-                <form string="Add Score">
+                <form string="Add Tournament">
                     <group>
-                        <field name="session_id"/>
-                        <!-- <field name="attendee_ids"/> -->
+                        <field name="tournament_id"/>
                     </group>
                 </form>
             </field>
@@ -24,3 +23,4 @@
 
 	</data>
 </odoo>
+

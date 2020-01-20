@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+	<!-- tournament -->
 	<template id="index">
 		<t t-call="website.layout">
 			<div class="container">
 			<title>Tornament</title>
-			<table border="1px solid" width="100%">
-				<a role="button" t-attf-href="/tournament/form/" >Create</a>
-				<tr>
-					<th>name</th>
-					<th>place</th>
-					<th>team</th>
-					<th>date</th>
-					<th>date</th>
-					<th>Action</th>
-				</tr>
-				<t t-foreach="tournaments" t-as="tournament">
-					<tr>
-						<p>
-							<td t-esc="tournament.name"/>
-							<td t-esc="tournament.place"/>
-							<td t-esc="tournament.team"/>
-							<td t-esc="tournament.starting_date"/>
-							<td t-esc="tournament.ending_date"/>
-							<td>
-								<a t-attf-href="/tournament/form/{{slug(tournament)}}" >
-	                        	<i class="fa fa-pencil"/></a>
-	           					<a t-attf-href="/delete/{{slug(tournament)}}/">
-	                        	<i class="fa fa-trash"/></a>
-	                    	</td>      
-						</p>
-					</tr>
-				</t>
-			</table>
-		</div>
+				<div class="table table-hover">
+					<div class="table-responsive">
+						<table border="1px solid" width="100%">
+							<a role="button" t-attf-href="/tournament/form/" >Create</a>
+							<tr>
+								<th>name</th>
+								<th>place</th>
+								<th>team</th>
+								<th>date</th>
+								<th>date</th>
+								<th>Action</th>
+							</tr>
+							<t t-foreach="tournaments" t-as="tournament">
+								<tr>
+									<p>
+										<td t-esc="tournament.name"/>
+										<td t-esc="tournament.place"/>
+										<td t-esc="tournament.team"/>
+										<td t-esc="tournament.starting_date"/>
+										<td t-esc="tournament.ending_date"/>
+										<td>
+											<a t-attf-href="/tournament/form/{{slug(tournament)}}" >
+				                        	<i class="fa fa-pencil"/></a>
+				           					<a t-attf-href="/tournament/delete/{{slug(tournament)}}/">
+				                        	<i class="fa fa-trash"/></a>
+				                    	</td>      
+									</p>
+								</tr>
+							</t>
+						</table>
+					</div>
+				</div>
+			</div>
 		</t>
 	</template>
-	<template id="tourna">
+	<template id="tournamentform">
 		<t t-call="website.layout">
 			<div class="container">
 			<title>Tournament-record</title>
@@ -54,15 +60,100 @@
 				</div>
 				<div class="form-group">
 					<label>Starting Date</label>
-					<input type="text" class="form-control" t-attf-value="#{tournament.starting_date if tournament else ''}" name="starting_date"/>
+					<input type="date" class="form-control" t-attf-value="#{tournament.starting_date if tournament else ''}" name="starting_date"/>
 				</div>
 				<div class="form-group">
 					<label>Ending Date</label>
-					<input type="text" class="form-control" t-attf-value="#{tournament.ending_date if tournament else ''}" name="ending_date"/>
+					<input type="date" class="form-control" t-attf-value="#{tournament.ending_date if tournament else ''}" name="ending_date"/>
 				</div>
 				<input type="submit" t-attf-value="#{'Update' if tournament else 'Create'}"/>
 			</form>
 		</div>
 		</t>
 	</template>
+
+	<!-- scoreboard -->
+	<template id="scoreboard">
+		<t t-call="website.layout">
+			<div class="container">
+			<title>Score Board</title>
+				<div class="table table-hover">
+					<div class="table-responsive">
+						<table border="1px solid" width="100%">
+							<a role="button" t-attf-href="/scoreboard/form/" >Create</a>
+							<tr>
+								<th>Stricker</th>
+								<th>Non Stricker</th>
+								<th>Bowler</th>
+								<th>run</th>
+								<th>Type of run</th>
+								<th>Action</th>
+							</tr>
+							<t t-foreach="scoreboards" t-as="scoreboard">
+								<tr>
+									<p>
+										<td t-esc="scoreboard.stricker"/>
+										<td t-esc="scoreboard.nonstricker"/>
+										<td t-esc="scoreboard.bowler"/>
+										<td t-esc="scoreboard.run"/>
+										<td t-esc="scoreboard.typeofrun"/>
+										<td>
+											<a t-attf-href="/scoreboard/form/{{slug(scoreboard)}}" >
+				                        	<i class="fa fa-pencil"/></a>
+				           					<a t-attf-href="/scoreboard/delete/{{slug(scoreboard)}}/">
+				                        	<i class="fa fa-trash"/></a>
+				                    	</td>      
+									</p>
+								</tr>
+							</t>
+						</table>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+	<template id="scoreboardform">
+		<t t-call="website.layout">
+			<div class="container">
+			<title>Score Board</title>
+				<form t-attf-action="/scoreboard/record/#{scoreboard.id if scoreboard else ''}" method="post">
+					<div class="form-group"> 
+						<label>Stricker</label>
+						<input type="text" class="form-control" t-attf-value="#{scoreboard.stricker if scoreboard else ''}" name="stricker"/>
+					</div>
+					<div class="form-group">
+						<label>Non Stricker</label>
+						<input type="text" class="form-control" t-attf-value="#{scoreboard.nonstricker if scoreboard else ''}" name="nonstricker"/>
+					</div>
+					<div class="form-group">
+						<label>Bowler</label>
+						<input type="text" class="form-control" t-attf-value="#{scoreboard.bowler if scoreboard else ''}" name="bowler"/>
+					</div>
+					<div class="form-group">
+						<label>Run</label>
+						<select type="text" class="form-control" t-attf-value="#{scoreboard.run if scoreboard else ''}" name="run">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>typeofrun</label>
+						<select type="text" class="form-control" t-attf-value="#{scoreboard.typeofrun if scoreboard else ''}" name="typeofrun">
+							<option value="batted">Batted</option>
+							<option value="extra">Extra</option>
+							<option value="out">Out</option>
+						</select>
+					</div>
+					<input type="submit" t-attf-value="#{'Update' if scoreboard else
+						'Create'}"/>
+				</form>
+			</div>
+		</t>
+	</template>
 </odoo>
+

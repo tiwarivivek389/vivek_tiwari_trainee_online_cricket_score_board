@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Live Cricket Score Board",
 
@@ -15,3 +14,5 @@
         'report/report.xml'
     ],
 }
+
+

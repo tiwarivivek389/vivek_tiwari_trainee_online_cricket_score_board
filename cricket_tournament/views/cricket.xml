@@ -216,7 +216,7 @@
             <field name="name">user.detail.tree</field>
             <field name="model">user.detail</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-success="role=='batsman'" decoration-info="role=='bowler'" decoration-warning="role=='allrounder'">
                     <field name="name"/>
                     <field name="image"/>
                     <field name="address"/>
@@ -275,7 +275,65 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="main_menu_live_cricket_score_board" name="Cricket_Tournament" />
+
+        <!-- score board -->
+        <record id="score_board_form_view" model="ir.ui.view">
+            <field name="name">score.board.form</field>
+            <field name="model">score.board</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="inning"/>
+                            <field name="over"/>
+                            <field name="ball"/>
+                            <field name="run"/>
+                            <field name="stricker"/>
+                            <field name="nonstricker"/>
+                            <field name="bowler"/>
+                            <field name="typeofrun"/>
+                            <field name="selectruninextra"/>
+                            <field name="selectbatsmanisout"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="score_board_tree_view" model="ir.ui.view">
+            <field name="name">score.board.tree</field>
+            <field name="model">score.board</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="inning"/>
+                    <field name="over"/>
+                    <field name="ball"/>
+                    <field name="run"/>
+                    <field name="stricker"/>
+                    <field name="nonstricker"/>
+                    <field name="bowler"/>
+                    <field name="typeofrun"/>
+                    <field name="selectruninextra"/>
+                    <field name="selectbatsmanisout"/>
+                </tree>
+            </field>
+        </record>
+        <record id="score_board_search_view" model="ir.ui.view">
+            <field name="name">score.board.search</field>
+            <field name="model">score.board</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="stricker" filter_domain="['|',('stricker','ilike',self),('typeofrun','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+        <record id="score_board_act_window" model="ir.actions.act_window">
+            <field name="name">Score Board</field>
+            <field name="res_model">score.board</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="main_menu_live_cricket_score_board" name="Cricket Tournament" />
 
         <menuitem id="sub_menu_tournament_detail" name="Tournament" action="tournament_detail_act_window" parent="main_menu_live_cricket_score_board" sequence="1" />
 
@@ -287,6 +345,9 @@
 
         <menuitem id="sub_menu_prize_caremony" name="Prize Caremony" action="prize_caremony_act_window" parent="main_menu_live_cricket_score_board" sequence="5" />
 
+        <menuitem id="sub_menu_score_board" name="Score Board" action="score_board_act_window" parent="main_menu_live_cricket_score_board" sequence="5" />
 
     </data>
 </odoo>
+
+
