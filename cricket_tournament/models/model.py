@@ -1,14 +1,22 @@
 from odoo import models,api,fields
+from odoo import http
 
 class TournamentDetail(models.Model):
 	_name="tournament.detail"
-	_discription="Tournament Detail"
+	_description="Tournament Detail"
 
 	name=fields.Char(string="Tournament name",required=True)
 	place=fields.Char(string="Tournament Place")
+	tournamenttype=fields.Selection([
+		('latherballtournament','Leather Ball Tournaments'),
+		('tennisballtournament','Tennis Ball Tournaments'),
+		('underarmstournament','Underarms Tournaments'),
+		('tapeballtournament','Tape Ball Tournaments')
+		])
 	team=fields.Integer(string="Participate Team")
 	starting_date=fields.Date(string="Tournament Starting Date")
 	ending_date=fields.Date(string="Tournament Ending Date")
+	shedule=fields.One2many("match.detail","match_id",string="Shedule")
 
 	@api.constrains('starting_date','ending_date')
 	def check_date(self):
@@ -18,20 +26,21 @@ class TournamentDetail(models.Model):
 
 class MatchDetail(models.Model):
 	_name="match.detail"
-	_discription="Match Detail"
+	_description="Match Detail"
 
 	name=fields.Char(string="Match Name",required=True)
 	team1name=fields.Many2one("team.detail",string="Team1Name")
 	team2name=fields.Many2one("team.detail",string="Team2Name")
-	matchtype=fields.Char(string="Match Type")
+	matchover=fields.Char(string="Match Over")
 	matchdatetime=fields.Datetime(string="Match_Date_Time")
 	umpirename=fields.Char(string="Umpire Name")
 	matchvenue=fields.Text(string="Match Venue")
 	color=fields.Integer()
+	match_id=fields.Many2one("tournament.detail",string="match",ondelete="restrict")
 
 class TeamDetail(models.Model):
 	_name="team.detail"
-	_discription="Team Detail"
+	_description="Team Detail"
 
 	name=fields.Char(string="Team Name",required=True)
 	playername=fields.Many2many("user.detail",string="Player Name")
@@ -42,7 +51,7 @@ class TeamDetail(models.Model):
 
 class UserDetail(models.Model):
 	_name="user.detail"
-	_discription="User Detail"
+	_description="User Detail"
 
 	name=fields.Char(string="Name",required=True)
 	image=fields.Binary()
@@ -66,10 +75,10 @@ class UserDetail(models.Model):
 
 class PrizeCaremony(models.Model):
 	_name="prize.caremony"
-	_discription="Prize Caremony"
+	_description="Prize Caremony"
 
 	name=fields.Char(string="Name",required=True)
-	receiver_name=fields.Char()
+	receiver_name=fields.Many2one("user.detail",string="Receiver Name")
 	giver_name=fields.Char()
 	amount=fields.Integer()
 	state=fields.Selection([('confirm','Confirm'),('draft','Draft'),('done','Done')],default="confirm")
@@ -86,28 +95,39 @@ class PrizeCaremony(models.Model):
 		self.write({'state':'done'})
 		return True
 
+class TossDetail(models.Model):
+	_name="toss.detail"
+	_description="Toss Detail"
+
+	name=fields.Many2one("team.detail",string="Toss Winner Team")
+	decide=fields.Selection([
+		('batting','Batting'),
+		('bowling','Bowling')
+		])
+	description=fields.Text()
+
 class ScoreBoard(models.Model):
 	_name="score.board"
-	_discription="Score Board"
+	_description="Score Board"
 
-	inning=fields.Selection([('firstinning','First Inning'),('secondinning','Second Inning')])
+	name=fields.Selection([('firstinning','First Inning'),('secondinning','Second Inning')])
 	over=fields.Integer(string="Over")
 	ball=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
-	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
-	stricker=fields.Many2one("user.detail",string="Stricker")
-	nonstricker=fields.Many2one("user.detail",string="Non-Stricker")
-	bowler=fields.Many2one("user.detail",string="Bowler")	
+	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])	
 	typeofrun=fields.Selection([
 		('batted','Batted'),
 		('extra','Extra'),
-		('extra,batted','Extra,Batted'),
+		('extrabatted','Extra Batted'),
 		('out','Out'),
-		('out,batted','Out,Batted')
+		('outbatted','Out Batted'),
+		('outbattedextra','Out Batted Extra'),
+		('outextra','Out Extra')
 		])
 	selectruninextra=fields.Selection([
 		('wide','Wide'),
+		('widebye','Wide Bye'),
 		('noball','Noball'),
-		('bye','Bye')
+		('noballbye','Noball Bye')
 		])
 	selectbatsmanisout=fields.Selection([
 		('bowled','Bowled'),
@@ -120,6 +140,13 @@ class ScoreBoard(models.Model):
 		('retirehurtstricker','Retirehurt-Stricker'),
 		('retirehurtnonstricker','Retirehurt-nonStricker'),
 		])
+	stricker=fields.Many2one("user.detail",string="Stricker")
+	nonstricker=fields.Many2one("user.detail",string="Non-Stricker")
+	bowler=fields.Many2one("user.detail",string="Bowler")
+	
+
+
+
 
 
 

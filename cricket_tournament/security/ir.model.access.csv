@@ -4,5 +4,6 @@ access_match_detail,access_match_detail,model_match_detail,base.group_user,1,1,1
 access_team_detail,access_team_detail,model_team_detail,base.group_user,1,1,1,1
 access_user_detail,access_user_detail,model_user_detail,base.group_user,1,1,1,1
 access_prize_caremony,access_prize_caremony,model_prize_caremony,base.group_user,1,1,1,1
+access_toss_detail,access_toss_detail,model_toss_detail,base.group_user,1,1,1,1
 access_score_board,access_score_board,model_score_board,base.group_user,1,1,1,1
 

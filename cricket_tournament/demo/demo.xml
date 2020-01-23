@@ -1,0 +1,532 @@
+<odoo>
+	<data>
+		
+		<!-- userdetail -->
+		<record id="user_detail_1" model="user.detail">
+			<field name="name">Virat Kohli</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/kohli.jpeg"/>
+			<field name="address">Delhi</field>
+			<field name="age">26</field>
+			<field name="role">batsman</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_2" model="user.detail">
+			<field name="name">Navdeep Saini</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/navdeepsaini.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">20</field>
+			<field name="role">bowler</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_3" model="user.detail">
+			<field name="name">Shivam Dubey</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/shivam dubey.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">21</field>
+			<field name="role">allrounder</field>
+			<field name="batting_style">Left Handed</field>
+			<field name="bowling_style">Left Handed</field>
+		</record>
+		<record id="user_detail_4" model="user.detail">
+			<field name="name">KL Rahul</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/klrahul.jpeg"/>
+			<field name="address">Karnataka</field>
+			<field name="age">28</field>
+			<field name="role">batsman</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_5" model="user.detail">
+			<field name="name">Parthiv Patel</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/parthivpatel.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">28</field>
+			<field name="role">keeparbatsman</field>
+			<field name="batting_style">left Handed</field>
+			<field name="bowling_style"> ---- </field>
+		</record>
+		<record id="user_detail_6" model="user.detail">
+			<field name="name">Rohit Sharma</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/rohit.jpeg"/>
+			<field name="address">Delhi</field>
+			<field name="age">26</field>
+			<field name="role">batsman</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_7" model="user.detail">
+			<field name="name">Jaspreet Bumrah</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/bumrah.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">26</field>
+			<field name="role">bowler</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_8" model="user.detail">
+			<field name="name">Hardik Pandya</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/hardik pandya.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">26</field>
+			<field name="role">allrounder</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_9" model="user.detail">
+			<field name="name">Rishabh Pant</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/klrahul.jpeg"/>
+			<field name="address">Karnataka</field>
+			<field name="age">26</field>
+			<field name="role">keeparbatsman</field>
+			<field name="batting_style">Left Handed</field>
+			<field name="bowling_style"> ---- </field>
+		</record>
+		<record id="user_detail_10" model="user.detail">
+			<field name="name">Shikhar Dhavan</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/dhavan.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">26</field>
+			<field name="role">batsman</field>
+			<field name="batting_style">Left Handed</field>
+			<field name="bowling_style"> ---- </field>
+		</record>
+
+		<!-- team detail -->
+		<record id="team_detail_1" model="team.detail">
+			<field name="name">RCB</field>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_1')])]"/>
+			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+		</record>
+		<record id="team_detail_2" model="team.detail">
+			<field name="name">Mumbai</field>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_2')])]"/>
+			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+		</record>
+		<record id="team_detail_3" model="team.detail">
+			<field name="name">Delhi</field>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_3')])]"/>
+			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+		</record>
+		<record id="team_detail_4" model="team.detail">
+			<field name="name">Chennai</field>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_3')])]"/>
+			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+		</record>
+
+		<!-- match detail -->
+		<record id="match_detail_1" model="match.detail">
+			<field name="name">Paytm1</field>
+			<field name="team1name" ref="cricket_tournament.team_detail_1"/>
+			<field name="team2name" ref="cricket_tournament.team_detail_3"/>
+			<field name="matchover">20-20</field>
+			<field name="matchdatetime">2020-02-02  04:00:00</field>
+			<field name="umpirename">Sudhir</field>
+			<field name="matchvenue">Sardar Patel Stadium</field>
+		</record>
+		<record id="match_detail_2" model="match.detail">
+			<field name="name">Paytm2</field>
+			<field name="team1name" ref="cricket_tournament.team_detail_2"/>
+			<field name="team2name" ref="cricket_tournament.team_detail_4"/>
+			<field name="matchover">20-20</field>
+			<field name="matchdatetime">2020-02-03  04:00:00</field>
+			<field name="umpirename">Sudhir</field>
+			<field name="matchvenue">Sardar Patel Stadium</field>
+		</record>
+		<record id="match_detail_3" model="match.detail">
+			<field name="name">Paytm Final</field>
+			<field name="team1name" ref="cricket_tournament.team_detail_1"/>
+			<field name="team2name" ref="cricket_tournament.team_detail_2"/>
+			<field name="matchover">20-20</field>
+			<field name="matchdatetime">2020-02-04  04:00:00</field>
+			<field name="umpirename">Sudhir</field>
+			<field name="matchvenue">Sardar Patel Stadium</field>
+		</record>
+
+
+		<!-- tournament detail -->
+		<record id="tournament_detail_1" model="tournament.detail">
+			<field name="name">Patel Tournament</field> 
+			<field name="place">Surat</field> 
+			<field name="tournamenttype">latherballtournament</field> 
+			<field name="team">4</field> 
+			<field name="starting_date">2020-02-08</field> 
+			<field name="ending_date">2020-02-12</field>
+			<field name="shedule" eval="[(6, 0, [ref('match_detail_1'),ref('match_detail_2'),ref('match_detail_3')])]"/>
+		</record>
+		<record id="tournament_detail_2" model="tournament.detail">
+			<field name="name">Jain Tournament</field> 
+			<field name="place">Surat</field> 
+			<field name="tournamenttype">tennisballtournament</field>
+			<field name="team">12</field> 
+			<field name="starting_date">2020-02-06</field> 
+			<field name="ending_date">2020-02-12</field>
+		</record>
+		<record id="tournament_detail_3" model="tournament.detail">
+			<field name="name">Gully Tournament</field> 
+			<field name="place">Surat</field> 
+			<field name="tournamenttype">underarmstournament</field>
+			<field name="team">10</field> 
+			<field name="starting_date">2020-04-26</field> 
+			<field name="ending_date">2020-04-30</field>
+		</record>
+		<record id="tournament_detail_4" model="tournament.detail">
+			<field name="name">Sardar Tournament</field> 
+			<field name="place">Surat</field> 
+			<field name="tournamenttype">tapeballtournament</field> 
+			<field name="team">8</field> 
+			<field name="starting_date">2020-03-02</field> 
+			<field name="ending_date">2020-03-06</field>
+		</record>
+
+
+		<!-- Toss -->
+		<record id="toss_detail_1" model="toss.detail">
+			<field name="name" ref="cricket_tournament.team_detail_1"/>
+			<field name="decide">batting</field>
+			<field name="description">RCB won the toss and elect to bat</field>
+		</record>
+
+
+		<!-- scoreboard -->
+		<record id="score_board_1" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">1</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_2" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">2</field>
+			<field name="run">4</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_3" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">3</field>
+			<field name="run">6</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_4" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">4</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_5" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">5</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_6" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">1</field>
+			<field name="ball">6</field>
+			<field name="run">0</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_8"/>	
+		</record>
+		<record id="score_board_7" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">1</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_8" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">2</field>
+			<field name="run">4</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_9" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">3</field>
+			<field name="run">6</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_10" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">4</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_11" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">5</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_12" model="score.board">
+			<field name="name">firstinning</field>
+			<field name="over">2</field>
+			<field name="ball">6</field>
+			<field name="run">0</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_2"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_7"/>	
+		</record>
+		<record id="score_board_13" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">1</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_14" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">2</field>
+			<field name="run">2</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_15" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">3</field>
+			<field name="run">0</field>
+			<field name="typeofrun">out</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout">bowled</field>
+			<field name="stricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_16" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">4</field>
+			<field name="run">4</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_17" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">5</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_18" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">0</field>
+			<field name="run">1</field>
+			<field name="typeofrun">extra</field>
+			<field name="selectruninextra">wide</field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_19" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">1</field>
+			<field name="ball">6</field>
+			<field name="run">6</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_2"/>	
+		</record>
+		<record id="score_board_20" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">1</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_21" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">2</field>
+			<field name="run">2</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_22" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">3</field>
+			<field name="run">0</field>
+			<field name="typeofrun">out</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout">bowled</field>
+			<field name="stricker" ref="cricket_tournament.user_detail_4"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_23" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">4</field>
+			<field name="run">4</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_24" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">5</field>
+			<field name="run">1</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_25" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">0</field>
+			<field name="run">1</field>
+			<field name="typeofrun">extra</field>
+			<field name="selectruninextra">wide</field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+		<record id="score_board_26" model="score.board">
+			<field name="name">secondinning</field>
+			<field name="over">2</field>
+			<field name="ball">6</field>
+			<field name="run">6</field>
+			<field name="typeofrun">batted</field>
+			<field name="selectruninextra"></field>
+			<field name="selectbatsmanisout"></field>
+			<field name="stricker" ref="cricket_tournament.user_detail_3"/>
+			<field name="nonstricker" ref="cricket_tournament.user_detail_1"/>
+			<field name="bowler" ref="cricket_tournament.user_detail_3"/>	
+		</record>
+
+		<!-- prize caremony -->
+		<record id="prize_caremony_1" model="prize.caremony">
+			<field name="name">Man Of The Match</field>
+			<field name="receiver_name" ref="cricket_tournament.user_detail_1"/>
+			<field name="giver_name">Gautam</field>
+			<field name="amount">10000</field>
+		</record>
+		<record id="prize_caremony_2" model="prize.caremony">
+			<field name="name">Man Of The Series</field>
+			<field name="receiver_name" ref="cricket_tournament.user_detail_2"/>
+			<field name="giver_name">Gautam</field>
+			<field name="amount">50000</field>
+		</record>
+	</data>
+</odoo>

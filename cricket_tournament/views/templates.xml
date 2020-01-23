@@ -3,7 +3,7 @@
 
 	<!-- tournament -->
 	<template id="index">
-		<t t-call="website.layout">
+		<!-- <t t-call="website.layout"> -->
 			<div class="container">
 			<title>Tornament</title>
 				<div class="table table-hover">
@@ -39,10 +39,10 @@
 					</div>
 				</div>
 			</div>
-		</t>
+		<!-- </t> -->
 	</template>
 	<template id="tournamentform">
-		<t t-call="website.layout">
+		<!-- <t t-call="website.layout"> -->
 			<div class="container">
 			<title>Tournament-record</title>
 			<form t-attf-action="/tournament/record/#{tournament.id if tournament else ''}" method="post">
@@ -69,12 +69,12 @@
 				<input type="submit" t-attf-value="#{'Update' if tournament else 'Create'}"/>
 			</form>
 		</div>
-		</t>
+		<!-- </t> -->
 	</template>
 
 	<!-- scoreboard -->
 	<template id="scoreboard">
-		<t t-call="website.layout">
+		<!-- <t t-call="website.layout"> -->
 			<div class="container">
 			<title>Score Board</title>
 				<div class="table table-hover">
@@ -110,10 +110,10 @@
 					</div>
 				</div>
 			</div>
-		</t>
+		<!-- </t> -->
 	</template>
 	<template id="scoreboardform">
-		<t t-call="website.layout">
+		<!-- <t t-call="website.layout"> -->
 			<div class="container">
 			<title>Score Board</title>
 				<form t-attf-action="/scoreboard/record/#{scoreboard.id if scoreboard else ''}" method="post">
@@ -153,7 +153,7 @@
 						'Create'}"/>
 				</form>
 			</div>
-		</t>
+		<!-- </t> -->
 	</template>
 </odoo>
 

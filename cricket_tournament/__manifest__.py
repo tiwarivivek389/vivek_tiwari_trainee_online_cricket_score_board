@@ -3,7 +3,7 @@
 
     'summary': """cricket tournament""",
     'author': "Vivek Tiwari",
-    'depends':["website"],
+    'depends':["web_dashboard"],
     'version': '0.1',
     'data': [
         'security/ir.model.access.csv',
@@ -12,6 +12,9 @@
         'views/templates.xml',
 
         'report/report.xml'
+    ],
+    'demo':[
+        'demo/demo.xml'
     ],
 }
 

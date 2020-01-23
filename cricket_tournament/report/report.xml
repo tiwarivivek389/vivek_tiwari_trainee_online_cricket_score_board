@@ -19,6 +19,14 @@
 	                    <p> <span t-field="doc.name"/></p>
 	                    <h1>Tournament Place</h1>
 	                    <p><span t-field="doc.place"/></p>
+	                    <h1>Participate Team</h1>
+	                    <p><span t-field="doc.team"/></p>
+	                    <h1>Tournament Starting Date</h1>
+	                    <p><span t-field="doc.starting_date"/></p>
+	                    <h1>Tournament Ending Date</h1>
+	                    <p><span t-field="doc.ending_date"/></p>
+	                    <h1>Tournament Shedule</h1>
+	                    <p><span t-field="doc.shedule"/></p>
 	                    </t>
 	                </div>
 		        </t>
