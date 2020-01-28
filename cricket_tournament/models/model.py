@@ -38,6 +38,7 @@ class MatchDetail(models.Model):
 	color=fields.Integer()
 	match_id=fields.Many2one("tournament.detail",string="match",ondelete="restrict")
 
+
 class TeamDetail(models.Model):
 	_name="team.detail"
 	_description="Team Detail"
@@ -99,21 +100,31 @@ class TossDetail(models.Model):
 	_name="toss.detail"
 	_description="Toss Detail"
 
-	name=fields.Many2one("team.detail",string="Toss Winner Team")
+	name=fields.Many2one('match.detail',string="match name")
+	team=fields.Many2many(comodel_name="team.detail",compute="_compute_team",string="Team",stored=False)
+	tosswinnername=fields.Many2one('team.detail',string="Toss Winner Team", domain="[('id','in', team)]")
 	decide=fields.Selection([
 		('batting','Batting'),
 		('bowling','Bowling')
 		])
 	description=fields.Text()
 
+	@api.depends('name')
+	def _compute_team(self):
+		match=self.env['match.detail'].search([('id','=',self.name.id)])
+		l=[match.team1name.id,match.team2name.id]
+		# print(match.team1name.id,"-------------",match.team2name.id)
+		self.team=self.env['team.detail'].search([('id','in',l)])	
+
+
 class ScoreBoard(models.Model):
 	_name="score.board"
-	_description="Score Board"
+	_description="Score Board"	
 
 	name=fields.Selection([('firstinning','First Inning'),('secondinning','Second Inning')])
 	over=fields.Integer(string="Over")
 	ball=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
-	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])	
+	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7')])	
 	typeofrun=fields.Selection([
 		('batted','Batted'),
 		('extra','Extra'),
@@ -142,7 +153,8 @@ class ScoreBoard(models.Model):
 		])
 	stricker=fields.Many2one("user.detail",string="Stricker")
 	nonstricker=fields.Many2one("user.detail",string="Non-Stricker")
-	bowler=fields.Many2one("user.detail",string="Bowler")
+	bowler=fields.Many2one("user.detail",string="Bowler")	
+
 	
 
 

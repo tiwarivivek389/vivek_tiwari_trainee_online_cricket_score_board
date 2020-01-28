@@ -12,24 +12,15 @@
 			<field name="bowling_style">Right Handed</field>
 		</record>
 		<record id="user_detail_2" model="user.detail">
-			<field name="name">Navdeep Saini</field>
-			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/navdeepsaini.jpeg"/>
-			<field name="address">Gujarat</field>
-			<field name="age">20</field>
-			<field name="role">bowler</field>
+			<field name="name">AB Devilers</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/parthivpatel.jpeg"/>
+			<field name="address">South Africa</field>
+			<field name="age">28</field>
+			<field name="role">batsman</field>
 			<field name="batting_style">Right Handed</field>
-			<field name="bowling_style">Right Handed</field>
-		</record>
-		<record id="user_detail_3" model="user.detail">
-			<field name="name">Shivam Dubey</field>
-			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/shivam dubey.jpeg"/>
-			<field name="address">Gujarat</field>
-			<field name="age">21</field>
-			<field name="role">allrounder</field>
-			<field name="batting_style">Left Handed</field>
 			<field name="bowling_style">Left Handed</field>
 		</record>
-		<record id="user_detail_4" model="user.detail">
+		<record id="user_detail_3" model="user.detail">
 			<field name="name">KL Rahul</field>
 			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/klrahul.jpeg"/>
 			<field name="address">Karnataka</field>
@@ -37,6 +28,15 @@
 			<field name="role">batsman</field>
 			<field name="batting_style">Right Handed</field>
 			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_4" model="user.detail">
+			<field name="name">Shivam Dubey</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/shivam dubey.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">21</field>
+			<field name="role">allrounder</field>
+			<field name="batting_style">Left Handed</field>
+			<field name="bowling_style">Left Handed</field>
 		</record>
 		<record id="user_detail_5" model="user.detail">
 			<field name="name">Parthiv Patel</field>
@@ -92,23 +92,50 @@
 			<field name="batting_style">Left Handed</field>
 			<field name="bowling_style"> ---- </field>
 		</record>
+		<record id="user_detail_11" model="user.detail">
+			<field name="name">Navdeep Saini</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/navdeepsaini.jpeg"/>
+			<field name="address">Gujarat</field>
+			<field name="age">20</field>
+			<field name="role">bowler</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_12" model="user.detail">
+			<field name="name">Dale Steyn</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/parthivpatel.jpeg"/>
+			<field name="address">South Africa</field>
+			<field name="age">28</field>
+			<field name="role">bowler</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
+		<record id="user_detail_13" model="user.detail">
+			<field name="name">Umesh Yadav</field>
+			<field name="image" type="base64" file="/home/vivek/odoo/enterprise/cricket_tournament/static/img/parthivpatel.jpeg"/>
+			<field name="address">Kanpur</field>
+			<field name="age">28</field>
+			<field name="role">bowler</field>
+			<field name="batting_style">Right Handed</field>
+			<field name="bowling_style">Right Handed</field>
+		</record>
 
 		<!-- team detail -->
 		<record id="team_detail_1" model="team.detail">
 			<field name="name">RCB</field>
-			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2'),ref('user_detail_3'),ref('user_detail_4'),ref('user_detail_5'),ref('user_detail_11'),ref('user_detail_12'),ref('user_detail_13')])]"/>
 			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_1')])]"/>
 			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
-			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
-			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_2'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_5'/>
 		</record>
 		<record id="team_detail_2" model="team.detail">
 			<field name="name">Mumbai</field>
-			<field name="playername" eval="[(6, 0, [ref('user_detail_1'),ref('user_detail_2')])]"/>
+			<field name="playername" eval="[(6, 0, [ref('user_detail_6'),ref('user_detail_7'),ref('user_detail_8'),ref('user_detail_9'),ref('user_detail_10')])]"/>
 			<field name="extraplayername" eval="[(6, 0, [ref('user_detail_2')])]"/>
-			<field name="captainname" ref='cricket_tournament.user_detail_1'/>
-			<field name="vicecaptainname" ref='cricket_tournament.user_detail_1'/>
-			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_1'/>
+			<field name="captainname" ref='cricket_tournament.user_detail_6'/>
+			<field name="vicecaptainname" ref='cricket_tournament.user_detail_7'/>
+			<field name="wicketkeeparname" ref='cricket_tournament.user_detail_9'/>
 		</record>
 		<record id="team_detail_3" model="team.detail">
 			<field name="name">Delhi</field>
@@ -195,7 +222,8 @@
 
 		<!-- Toss -->
 		<record id="toss_detail_1" model="toss.detail">
-			<field name="name" ref="cricket_tournament.team_detail_1"/>
+			<field name="name" ref="cricket_tournament.match_detail_1"/>
+			<field name="tosswinnername" ref="cricket_tournament.team_detail_1"/>
 			<field name="decide">batting</field>
 			<field name="description">RCB won the toss and elect to bat</field>
 		</record>

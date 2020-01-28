@@ -6,6 +6,7 @@
     'depends':["web_dashboard"],
     'version': '0.1',
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/cricket.xml',
         'views/wizard.xml',

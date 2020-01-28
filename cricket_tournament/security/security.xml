@@ -1,0 +1,17 @@
+<odoo>
+	<record id="module_security" model="ir.module.category">
+		<field name="name">Score Board</field>
+		<field name="description">Subscriber</field>
+		<field name="sequence">3</field>
+	</record>
+	<record id="group_user" model="res.groups">
+		<field name="name">Subscriber</field>
+		<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		<field name="category_id" ref="cricket_tournament.module_security"/>
+	</record>
+	<record id="group_organizer" model="res.groups">
+		<field name="name">Organizer</field>
+		<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		<field name="category_id" ref="cricket_tournament.module_security"/>
+	</record>
+</odoo>

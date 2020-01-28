@@ -365,16 +365,18 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="team" invisible="1"/>
+                            <field name="tosswinnername"/>
                             <field name="decide" widget="radio"/>
                             <field name="description"/>
                         </group>
-                        <notebook>
+                       <!--  <notebook>
                             <page string="page string">
                                 <field name="name"/>
                                 <field name="decide"/>
                                 <field name="description"/> 
                             </page>
-                        </notebook>
+                        </notebook> -->
                     </sheet>
                 </form>
             </field>
@@ -385,6 +387,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="tosswinnername"/>
                     <field name="decide" widget="radio"/>
                     <field name="description"/>
                 </tree>
@@ -406,8 +409,9 @@
                         <group> 
                             <field name="name"/>
                             <field name="over"/>
-                            <field name="ball"/>
-                            <field name="run"/>
+
+                            <field name="ball" widget="radio" options="{'horizontal': true}" />
+                            <field name="run" widget="radio" options="{'horizontal': true}" />
                             <field name="typeofrun"/>
                             <field name="selectruninextra"/>
                             <field name="selectbatsmanisout"/>
@@ -441,10 +445,10 @@
             <field name="name">score.board.graph</field>
             <field name="model">score.board</field>
             <field name="arch" type="xml">
-                <graph string="Score Board">
-                    <field name="name" type="measure"/>
-                    <field name="over" type="measure"/> 
-                    <field name="ball" type="row"/>
+                <graph string="Score Board"> 
+                    <field name="ball"/>
+                    <!-- <field name="name" type="measure"/> -->
+                    <!-- <field name="over" type="measure"/> -->
                     <field name="run" type="measure"/>
                 </graph>
             </field>
@@ -518,7 +522,7 @@
 
         <menuitem id="main_menu_live_cricket_score_board" name="Cricket Tournament" action="tournament_dashboard_act_window" web_icon="cricket_tournament,static/description/index.png"/>
 
-        <menuitem id="sub_menu_live_cricket_score_board" name="Configuration" parent="main_menu_live_cricket_score_board" sequence="1"/>
+        <menuitem id="sub_menu_live_cricket_score_board" name="Configuration" parent="main_menu_live_cricket_score_board" sequence="4"/>
 
         <menuitem id="sub_menu_tournament_detail" name="Tournament" action="tournament_detail_act_window" parent="sub_menu_live_cricket_score_board" sequence="1" />
 
@@ -528,15 +532,15 @@
 
         <menuitem id="sub_menu_user_detail" name="User" action="user_detail_act_window" parent="sub_menu_live_cricket_score_board" sequence="4" />
 
-        <menuitem id="sub_menu_score_board" name="Score Board" parent="main_menu_live_cricket_score_board" sequence="2"/>
+        <menuitem id="sub_menu_score_board" name="Score Board" parent="main_menu_live_cricket_score_board" sequence="1"/>
 
         <menuitem id="sub_menu_toss_detail" name="Toss" action="toss_detail_act_window" parent="sub_menu_score_board" sequence="1" />
 
         <menuitem id="sub_menu_score" name="Score Board" action="score_board_act_window" parent="sub_menu_score_board" sequence="2" />
 
-        <menuitem id="sub_menu_prize_caremony" name="Prize Caremony" action="prize_caremony_act_window" parent="main_menu_live_cricket_score_board" sequence="3" />
+        <menuitem id="sub_menu_prize_caremony" name="Prize Caremony" action="prize_caremony_act_window" parent="main_menu_live_cricket_score_board" sequence="2" groups="cricket_tournament.group_organizer" />
 
-        <menuitem id="sub_menu_report" name="Report" action="score_board_dashboard_act_window" parent="main_menu_live_cricket_score_board" sequence="4"/>
+        <menuitem id="sub_menu_report" name="Reporting" action="score_board_dashboard_act_window" parent="main_menu_live_cricket_score_board" sequence="3" groups="cricket_tournament.group_organizer"/>
     </data>
 </odoo>
 
