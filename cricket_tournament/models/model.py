@@ -3,9 +3,11 @@ from odoo import http
 
 class TournamentDetail(models.Model):
 	_name="tournament.detail"
+	_inherit = ['mail.thread']
 	_description="Tournament Detail"
 
 	name=fields.Char(string="Tournament name",required=True)
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	place=fields.Char(string="Tournament Place")
 	tournamenttype=fields.Selection([
 		('latherballtournament','Leather Ball Tournaments'),
@@ -26,9 +28,11 @@ class TournamentDetail(models.Model):
 
 class MatchDetail(models.Model):
 	_name="match.detail"
+	_inherit = ['mail.thread']
 	_description="Match Detail"
 
 	name=fields.Char(string="Match Name",required=True)
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	team1name=fields.Many2one("team.detail",string="Team1Name")
 	team2name=fields.Many2one("team.detail",string="Team2Name")
 	matchover=fields.Char(string="Match Over")
@@ -44,6 +48,7 @@ class TeamDetail(models.Model):
 	_description="Team Detail"
 
 	name=fields.Char(string="Team Name",required=True)
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	playername=fields.Many2many("user.detail",string="Player Name")
 	extraplayername=fields.One2many("user.detail","user_id",string="Extra Player Name")
 	captainname=fields.Many2one("user.detail",string="Captain Name")
@@ -55,6 +60,7 @@ class UserDetail(models.Model):
 	_description="User Detail"
 
 	name=fields.Char(string="Name",required=True)
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	image=fields.Binary()
 	address=fields.Text()
 	age=fields.Integer()
@@ -79,6 +85,7 @@ class PrizeCaremony(models.Model):
 	_description="Prize Caremony"
 
 	name=fields.Char(string="Name",required=True)
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	receiver_name=fields.Many2one("user.detail",string="Receiver Name")
 	giver_name=fields.Char()
 	amount=fields.Integer()
@@ -101,6 +108,7 @@ class TossDetail(models.Model):
 	_description="Toss Detail"
 
 	name=fields.Many2one('match.detail',string="match name")
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	team=fields.Many2many(comodel_name="team.detail",compute="_compute_team",string="Team",stored=False)
 	tosswinnername=fields.Many2one('team.detail',string="Toss Winner Team", domain="[('id','in', team)]")
 	decide=fields.Selection([
@@ -113,7 +121,6 @@ class TossDetail(models.Model):
 	def _compute_team(self):
 		match=self.env['match.detail'].search([('id','=',self.name.id)])
 		l=[match.team1name.id,match.team2name.id]
-		# print(match.team1name.id,"-------------",match.team2name.id)
 		self.team=self.env['team.detail'].search([('id','in',l)])	
 
 
@@ -122,6 +129,7 @@ class ScoreBoard(models.Model):
 	_description="Score Board"	
 
 	name=fields.Selection([('firstinning','First Inning'),('secondinning','Second Inning')])
+	company_id=fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
 	over=fields.Integer(string="Over")
 	ball=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6')])
 	run=fields.Selection([('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7')])	
@@ -138,10 +146,10 @@ class ScoreBoard(models.Model):
 		('wide','Wide'),
 		('widebye','Wide Bye'),
 		('noball','Noball'),
-		('noballbye','Noball Bye')
+		('bye','Bye')
 		])
 	selectbatsmanisout=fields.Selection([
-		('bowled','Bowled'),
+		('bowled','Bowled'),	
 		('catch','Catch'),
 		('lbw','LBW'),
 		('stumped','Stumped'),
@@ -153,14 +161,68 @@ class ScoreBoard(models.Model):
 		])
 	stricker=fields.Many2one("user.detail",string="Stricker")
 	nonstricker=fields.Many2one("user.detail",string="Non-Stricker")
-	bowler=fields.Many2one("user.detail",string="Bowler")	
-
-	
-
-
+	bowler=fields.Many2one("user.detail",string="Bowler")
+	description=fields.Text(string="Commentry")
+	totalrun=fields.Integer(compute="_compute_totalrun",store=True)
 
 
+	def button_run_0(self):
+		self.write({'run':"0"})
+		return True
 
+	def button_run_1(self):
+		self.write({'run':"1"})
+		return True
+
+	def button_run_2(self):
+		self.write({'run':"2"})
+		return True
+
+	def button_run_3(self):
+		self.write({'run':"3"})
+		return True
+
+	def button_run_4(self):
+		self.write({'run':"4"})
+		return True
+
+	def button_run_5(self):
+		self.write({'run':"5"})
+		return True
+
+	def button_run_6(self):
+		self.write({'run':"6"})
+		return True
+
+	def button_run_7(self):
+		self.write({'run':"7"})
+		return True
+
+	def button_run_out(self):
+		self.write({'typeofrun':"out"})
+		return True
+
+	def button_run_wd(self):
+		self.write({'selectruninextra':"wide"})
+		return True
+
+	def button_run_nb(self):
+		self.write({'selectruninextra':"noball"})
+		return True
+
+	def button_run_bye(self):	
+		self.write({'selectruninextra':"bye"})
+		return True
+
+	@api.onchange('run','totalrun')
+	def _compute_totalrun(self):
+		total=self.env['score.board'].search([])
+		score = 0
+		if total:
+			for t in total:
+				score = score + int(t.run)
+		for r in self:
+			r.totalrun = score
 
 
 

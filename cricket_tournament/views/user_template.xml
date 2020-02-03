@@ -1,0 +1,76 @@
+<odoo>
+	<template id="sub">
+		<t t-call="portal.portal_layout">
+			<t t-call-assets="web.assets_frontend"></t>
+			<div class="container">
+			<title>Tornament</title>
+				<div class="table table-hover">
+					<div class="table-responsive">
+						<table border="1px solid" width="100%">
+							<tr>
+								<th>name</th>
+								<th>place</th>
+								<th>Tournament Type</th>
+								<th>team</th>
+								<th>starting date</th>
+								<th>ending date</th>
+								<th>Shedule</th>
+							</tr>
+							<t t-foreach="tournaments" t-as="tournament">
+								<tr>
+									<p>
+										<td t-esc="tournament.name"/>
+										<td t-esc="tournament.place"/>
+										<td t-esc="tournament.tournamenttype"/>
+										<td t-esc="tournament.team"/>
+										<td t-esc="tournament.starting_date"/>
+										<td t-esc="tournament.ending_date"/>
+										<td>
+											<a t-attf-href="/tournament_shedule/{{slug(tournament)}}">Shedule</a>
+										</td>
+									</p>
+								</tr>
+							</t>
+						</table>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+	<template id="match">
+		<t t-call="portal.portal_layout">
+			<t t-call-assets="web.assets_frontend"></t>
+			<div class="container">
+			<title>Tornament</title>
+				<div class="table table-hover">
+					<div class="table-responsive">
+						<table border="1px solid" width="100%">
+							<tr>
+								<th>name</th>
+								<th>team1name</th>
+								<th>Team2name</th>
+								<th>Matchover</th>
+								<th>Match date Time</th>
+								<th>Umpire Name</th>
+								<th>Match Venue</th>
+							</tr>
+							<t t-foreach="matchs" t-as="match">
+								<tr>
+									<p>
+										<td t-esc="match.name"/>
+										<td t-esc="match.team1name"/>
+										<td t-esc="match.team2name"/>
+										<td t-esc="match.matchover"/>
+										<td t-esc="match.matchdatetime"/>
+										<td t-esc="match.umpirename"/>
+										<td t-esc="match.matchvenue"/>
+									</p>
+								</tr>
+							</t>
+						</table>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

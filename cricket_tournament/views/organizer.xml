@@ -1,0 +1,42 @@
+<odoo>
+	<template id="organizer">
+		<t t-call="portal.frontend_layout">
+			<div class="container">
+		<form method="post" action="/userregister/form">
+			<div class="form-group">
+				<label>User name:</label>
+				<input type="text"  name="username"/>
+			</div>
+			<div class="form-group">
+				<label>User type:</label>
+				<input type="radio"  name="login" id="serviceprovider" value="serviceprovider">Service Provider</input>
+				<input type="radio"  name="login" id="customer" value="customer">Customer</input>
+			</div>
+			<div class="form-group">
+				<label>Email:</label>
+				<input type="email"  name="email"/>
+			</div>
+			<div class="form-group">
+				<label>Company name</label>
+				<input type="text"  name="companyname"/>
+			</div>
+			<div class="form-group">
+				<label>Currency:</label>
+				<select name="currency">
+					<t t-foreach="currency" t-as="cur">
+						<option t-attf-value="{{ cur.name }}"><t t-esc="cur.name"/> </option>
+					</t>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>password</label>
+				<input type="password"  name="password"/>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="submit"/>
+			</div>
+		</form>
+	</div>
+	</t>
+	</template>
+</odoo>

@@ -18,6 +18,10 @@
                             <field name="shedule"/>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -156,6 +160,10 @@
                             <field name="matchvenue"/>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -370,13 +378,6 @@
                             <field name="decide" widget="radio"/>
                             <field name="description"/>
                         </group>
-                       <!--  <notebook>
-                            <page string="page string">
-                                <field name="name"/>
-                                <field name="decide"/>
-                                <field name="description"/> 
-                            </page>
-                        </notebook> -->
                     </sheet>
                 </form>
             </field>
@@ -406,18 +407,58 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group> 
-                            <field name="name"/>
-                            <field name="over"/>
-
-                            <field name="ball" widget="radio" options="{'horizontal': true}" />
-                            <field name="run" widget="radio" options="{'horizontal': true}" />
-                            <field name="typeofrun"/>
-                            <field name="selectruninextra"/>
-                            <field name="selectbatsmanisout"/>
-                            <field name="stricker"/>
-                            <field name="nonstricker"/>
-                            <field name="bowler"/>
+                        <notebook>
+                            <page string="scoreboard">
+                                <group>
+                                    <field name="totalrun"/>
+                                </group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                                <group>
+                                    <field name="over"/>
+                                </group>
+                            </page>
+                            <page string="selectbatsman">
+                                <group>
+                                    <field name="stricker"/>
+                                    <field name="nonstricker"/>
+                                </group>
+                            </page>
+                            <page string="selectbowler">
+                                <group>
+                                    <field name="bowler"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <group>
+                            <group>
+                                <button name="button_run_0" string="0" class="btn-info" type="object"/>
+                                <button name="button_run_1" string="1" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <button name="button_run_2" string="2" class="btn-info" type="object"/>
+                                <button name="button_run_wd" string="Wide" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <button name="button_run_3" string="3" class="btn-info" type="object"/>
+                                <button name="button_run_4" string="4" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <button name="button_run_5" string="5" class="btn-info" type="object"/>
+                                <button name="button_run_out" string="Out" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <button name="button_run_6" string="6" class="btn-info" type="object"/>
+                                <button name="button_run_7" string="7" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <button name="button_run_nb" string="NB" class="btn-info" type="object"/>
+                                <button name="button_run_bye" string="Bye" class="btn-info" type="object"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -446,9 +487,9 @@
             <field name="model">score.board</field>
             <field name="arch" type="xml">
                 <graph string="Score Board"> 
-                    <field name="ball"/>
-                    <!-- <field name="name" type="measure"/> -->
-                    <!-- <field name="over" type="measure"/> -->
+                    <field name="ball" type="col"/>
+                    <field name="name" group="True"/>
+                    <field name="over" type="measure"/>
                     <field name="run" type="measure"/>
                 </graph>
             </field>
