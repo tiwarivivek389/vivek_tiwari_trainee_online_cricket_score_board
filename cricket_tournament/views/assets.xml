@@ -1,7 +1,0 @@
-<odoo>
-	<template id="assets_frontend" inherit_id="web.assets_frontend" name="Demo Assets">
-        <xpath expr="//link[last()]" position="inside">
-            <link rel="stylesheet" type="text/scss" href="/cricket_tournament/static/src/scss/user_template.scss"/>
-        </xpath>
-    </template>
-</odoo>

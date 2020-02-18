@@ -1,38 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+	<template id="user_portal" name="Tournamnet" inherit_id="portal.portal_breadcrumbs"  priority="1">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li style="margin-left:10px; font-weight: bold"><a href="/yourhomepage/">Tournament</a></li>
+            <li style="margin-left:10px; font-weight: bold"><a href="/match_detail/">Match</a></li>
+        </xpath>
+	</template>
 	<template id="sub">
 		<t t-call="portal.portal_layout">
 			<t t-call-assets="web.assets_frontend"></t>
 			<div class="container">
 			<title>Tornament</title>
-				<div class="table table-hover">
-					<div class="table-responsive">
-						<table border="1px solid" width="100%">
-							<tr>
-								<th>name</th>
-								<th>place</th>
-								<th>Tournament Type</th>
-								<th>team</th>
-								<th>starting date</th>
-								<th>ending date</th>
-								<th>Shedule</th>
-							</tr>
-							<t t-foreach="tournaments" t-as="tournament">
-								<tr>
-									<p>
-										<td t-esc="tournament.name"/>
-										<td t-esc="tournament.place"/>
-										<td t-esc="tournament.tournamenttype"/>
-										<td t-esc="tournament.team"/>
-										<td t-esc="tournament.starting_date"/>
-										<td t-esc="tournament.ending_date"/>
-										<td>
-											<a t-attf-href="/tournament_shedule/{{slug(tournament)}}">Shedule</a>
-										</td>
-									</p>
-								</tr>
-							</t>
-						</table>
-					</div>
+				<div class="row">
+					<t t-foreach="tournaments" t-as="tournament">
+						<div class="col-sm-4">
+						    <div class="card" style="margin-top:40px">
+						      <div class="card-body">
+						        <h5 class="card-title"><t t-esc="tournament.name"/></h5>
+						        <p class="card-text">
+						        	Place : <t t-esc="tournament.place"/><br/>
+									Tournament Type : <t t-esc="tournament.tournamenttype"/><br/>
+									Participate Team : <t t-esc="tournament.team"/><br/>
+									Tournament Starting Date : <t t-esc="tournament.starting_date"/><br/>
+									Tournament Ending Date : <t t-esc="tournament.ending_date"/><br/>
+								</p>
+						        <a t-attf-href="/tournament_shedule/{{tournament.id}}" class="btn btn-primary">Shedule</a>
+						      </div>
+						    </div>
+						</div>
+					</t>
 				</div>
 			</div>
 		</t>
@@ -41,34 +37,76 @@
 		<t t-call="portal.portal_layout">
 			<t t-call-assets="web.assets_frontend"></t>
 			<div class="container">
-			<title>Tornament</title>
-				<div class="table table-hover">
-					<div class="table-responsive">
-						<table border="1px solid" width="100%">
-							<tr>
-								<th>name</th>
-								<th>team1name</th>
-								<th>Team2name</th>
-								<th>Matchover</th>
-								<th>Match date Time</th>
-								<th>Umpire Name</th>
-								<th>Match Venue</th>
-							</tr>
-							<t t-foreach="matchs" t-as="match">
-								<tr>
-									<p>
-										<td t-esc="match.name"/>
-										<td t-esc="match.team1name"/>
-										<td t-esc="match.team2name"/>
-										<td t-esc="match.matchover"/>
-										<td t-esc="match.matchdatetime"/>
-										<td t-esc="match.umpirename"/>
-										<td t-esc="match.matchvenue"/>
+			<title>Match</title>
+				<div class="row">
+					<t t-foreach="matchs" t-as="match">
+						<div class="col-sm-4">
+							<div class="card" style="margin-top:40px">
+						      	<div class="card-body">
+						      		<h5 class="card-title"><t t-esc="match.name"/></h5>
+									<p class="card-text">
+										Team 1 Name : <t t-esc="match.team1name_id.name"/><br/>
+										Team 2 Name : <t t-esc="match.team2name_id.name"/><br/>
+										Match Over : <t t-esc="match.matchover"/><br/>
+										Match Date and Time : <t t-esc="match.matchdatetime"/><br/>
+										Umpire Name : <t t-esc="match.umpirename"/><br/>
+										Match Venue : <t t-esc="match.matchvenue"/><br/>
 									</p>
-								</tr>
-							</t>
-						</table>
-					</div>
+									 <a t-attf-href="/form/" class="btn btn-primary">Score Board</a>
+								</div>
+							</div>
+						</div>
+					</t>
+				</div>
+			</div>
+		</t>
+	</template>
+	<template id="match_form">
+		<t t-call="portal.portal_layout">
+			<t t-call-assets="web.assets_frontend"></t>
+			<div class="container">
+			<title>Tornament</title>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top:10px">
+				 	<a class="nav-link" href="/summary/">Summary <span class="sr-only">(current)</span></a>
+				 	<a class="nav-link" href="#">ScoreCard <span class="sr-only">(current)</span></a>
+				 	<a class="nav-link" href="#">Commentry <span class="sr-only">(current)</span></a>
+				 	<a class="nav-link" href="#">Analysis <span class="sr-only">(current)</span></a>
+				 	<a class="nav-link" href="#">PrizeCaremony <span class="sr-only">(current)</span></a>
+				 	<a class="nav-link" href="/team_detail/">Team <span class="sr-only">(current)</span></a>
+				 	<form class="form-inline my-2 my-lg-0" style="margin-left:200px">
+				      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+				      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+				    </form>
+				</nav>
+				<div class="row">
+					<t t-foreach="tournaments" t-as="tournament">
+						<div class="col-sm-6">
+						    <div class="card" style="margin-top:40px">
+						      	<div class="card-body">
+						        <h5 class="card-title"><t t-esc="tournament.name"/>
+						 			, <t t-esc="tournament.place"/></h5>
+									(<t t-esc="tournament.tournamenttype"/>)
+								</div>
+						    </div>
+						</div>
+					</t>
+				</div>
+				<div class="row">
+					<t t-foreach="teams" t-as="team">
+						<div class="col-sm-4">
+							<div class="card" style="margin-top:40px">
+						      	<div class="card-body">
+						      		<h5 class="card-title"><t t-esc="team.name"/></h5>
+									<p class="card-text">
+										Player Name : <t t-esc="team.playername_ids"/><br/>
+										Captain Name : <t t-esc="team.captainname_id.name"/><br/>
+										Vice Captain Name : <t t-esc="team.vicecaptainname_id.name"/><br/>
+										Wicket Keepar Name : <t t-esc="team.wicketkeeparname_id.name"/><br/>
+									</p>
+								</div>
+							</div>
+						</div>
+					</t>
 				</div>
 			</div>
 		</t>

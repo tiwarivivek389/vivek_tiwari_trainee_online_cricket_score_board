@@ -1,28 +1,29 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': "Live Cricket Score Board",
-
     'summary': """cricket tournament""",
     'author': "Vivek Tiwari",
-    'depends':["base","portal","web_dashboard"],
+    'depends': ["base", "portal", "web_dashboard"],
     'version': '0.1',
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        
-
+        'views/user_detail_view.xml',
+        'views/team_detail_view.xml',
+        'views/match_detail_view.xml',
+        'views/tournament_detail_view.xml',
+        'views/prize_caremony_view.xml',
+        'views/toss_detail_view.xml',
+        'views/score_board_view.xml',
+        'views/payment.xml',
         'views/cricket.xml',
-        'views/wizard.xml',
-        'views/templates.xml',
-        'views/organizer.xml',
-        'views/assets.xml',
+        'views/registration.xml',
         'views/user_template.xml',
-        
-
+        'views/res_config_setting_view.xml',
         'report/report.xml'
     ],
-    'demo':[
+    'demo': [
         'demo/demo.xml'
     ],
 }
-
-

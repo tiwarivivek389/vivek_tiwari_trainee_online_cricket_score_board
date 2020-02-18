@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<record id="module_security" model="ir.module.category">
 		<field name="name">Score Board</field>
@@ -6,7 +7,7 @@
 	</record>
 	<record id="group_organizer" model="res.groups">
 		<field name="name">Organizer</field>
-		<field name="implied_ids" eval="[(4, ref('base.user_admin'))]"/>
+		<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
 		<field name="category_id" ref="cricket_tournament.module_security"/>
 	</record>
 	<record id="tournament_detail_record_restricted_company_rule" model="ir.rule">
